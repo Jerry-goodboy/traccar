@@ -123,7 +123,7 @@ public class MiniFinderProtocolDecoder extends BaseProtocolDecoder {
 
         position.setAltitude(parser.nextDouble(0));
 
-        position.set(Position.KEY_BATTERY, parser.nextInt(0));
+        position.set(Position.KEY_BATTERY_LEVEL, parser.nextInt(0));
     }
 
     @Override
@@ -146,8 +146,7 @@ public class MiniFinderProtocolDecoder extends BaseProtocolDecoder {
             return null;
         }
 
-        Position position = new Position();
-        position.setProtocol(getProtocolName());
+        Position position = new Position(getProtocolName());
         position.setDeviceId(deviceSession.getDeviceId());
 
         String type = sentence.substring(1, 2);
